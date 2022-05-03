@@ -1,0 +1,23 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🗂 Checkout (${{ github.ref }})
+        uses: actions/checkout@v3.0.2
+        with:
+          persist-credentials: false
+      - run: ./mvnw package --batch-mode
+      - uses: actions/upload-artifact@v3
+        with:
+          name: Bundled JARs
+          path: target/*-bundled-*.jar
+          if-no-files-found: error
+      - run: ./test_all_jars.sh
