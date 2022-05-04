@@ -39,9 +39,7 @@ import org.apache.beam.sdk.schemas.annotations.SchemaCreate;
 import org.apache.beam.sdk.schemas.transforms.Convert;
 import org.apache.beam.sdk.transforms.JsonToRow;
 
-/**
- * An example that read a messages from Pubsub and writes to Snowflake.
- */
+/** An example that read a messages from Pubsub and writes to Snowflake. */
 public class IngestPubsubToSnowflake {
 
   public interface PubSubToSnowflakeOptions extends SnowflakePipelineOptions {
